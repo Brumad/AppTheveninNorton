@@ -1,0 +1,17 @@
+{
+  "name": "Calculadora Thevenin e Norton",
+  "short_name": "Thevenin",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#1e1e2f",
+  "theme_color": "#1e1e2f",
+  "description": "Calculadora instalavel para equivalentes de Thevenin e Norton.",
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

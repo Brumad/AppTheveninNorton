@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1e1e2f" />
+    <title>Thevenin & Norton</title>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section id="screen-main" class="screen active">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Calculadora eletrica</p>
+            <h1>Thevenin & Norton</h1>
+          </div>
+          <button id="settings-button" class="icon-button" type="button" aria-label="Abrir opcoes">
+            &#9881;
+          </button>
+        </header>
+
+        <section class="grid-layout">
+          <form id="calculator-form" class="panel input-panel">
+            <label class="field">
+              <span>Tensao da fonte (V)</span>
+              <input id="voltage-input" inputmode="decimal" type="number" step="any" placeholder="Ex: 12" />
+            </label>
+
+            <div class="resistor-header">
+              <h2>Resistores</h2>
+              <span id="resistor-count">0/5</span>
+            </div>
+
+            <div id="resistor-list" class="resistor-list"></div>
+
+            <button id="add-resistor-button" class="secondary-button" type="button">
+              Adicionar resistor
+            </button>
+            <button class="primary-button" type="submit">Calcular</button>
+          </form>
+
+          <section class="panel result-panel">
+            <h2>Resultado</h2>
+            <div id="result-box" class="result-box">O resultado aparecera aqui.</div>
+          </section>
+
+          <section class="panel history-panel">
+            <div class="history-title">
+              <h2>Ultimas 10</h2>
+              <button id="clear-history-button" type="button">Limpar</button>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>V</th>
+                    <th>R</th>
+                    <th>Vth</th>
+                    <th>Rth</th>
+                    <th>In</th>
+                  </tr>
+                </thead>
+                <tbody id="history-body"></tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+      </section>
+
+      <section id="screen-settings" class="screen">
+        <header class="topbar">
+          <button id="back-button" class="back-button" type="button">Voltar</button>
+          <h1>Opcoes</h1>
+          <span class="topbar-spacer"></span>
+        </header>
+
+        <section class="settings-panel">
+          <label class="switch-row">
+            <span>Ativar musica</span>
+            <input id="music-enabled" type="checkbox" />
+          </label>
+
+          <button id="mute-button" class="primary-button" type="button">Mutar musica</button>
+
+          <label class="field">
+            <span>Tamanho da tela</span>
+            <select id="screen-size">
+              <option value="small">Pequeno</option>
+              <option value="medium">Medio</option>
+              <option value="large">Grande</option>
+              <option value="fullscreen">Fullscreen</option>
+            </select>
+          </label>
+
+          <button id="install-button" class="secondary-button hidden" type="button">
+            Instalar aplicativo
+          </button>
+
+          <p class="hint">
+            Para musica no celular, coloque arquivos .wav em assets/music e cadastre os nomes no arquivo app.js.
+          </p>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
