@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#1e1e2f" />
-    <title>Thevenin & Norton</title>
+    <title>TheoNor Calculator</title>
     <link rel="manifest" href="manifest.json" />
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -13,8 +13,8 @@
       <section id="screen-main" class="screen active">
         <header class="topbar">
           <div>
-            <p class="eyebrow">Calculadora eletrica</p>
-            <h1>Thevenin & Norton</h1>
+            <p class="eyebrow">Projeto Thevenin Norton Faculdade</p>
+            <h1>TheoNor Calculator</h1>
           </div>
           <button id="settings-button" class="icon-button" type="button" aria-label="Abrir opcoes">
             &#9881;
@@ -28,10 +28,20 @@
               <input id="voltage-input" inputmode="decimal" type="number" step="any" placeholder="Ex: 12" />
             </label>
 
+            <label class="field">
+              <span>Configuracao do ramo A-B</span>
+              <select id="circuit-mode">
+                <option value="parallel">Paralelo</option>
+                <option value="series">Serie</option>
+              </select>
+            </label>
+
             <div class="resistor-header">
               <h2>Resistores</h2>
-              <span id="resistor-count">0/5</span>
+              <span id="resistor-count">0/3</span>
             </div>
+
+            <p class="form-note">R1 fica em serie com a fonte; os demais resistores formam o ramo entre A e B.</p>
 
             <div id="resistor-list" class="resistor-list"></div>
 
@@ -58,6 +68,7 @@
                     <th>#</th>
                     <th>V</th>
                     <th>R</th>
+                    <th>Modo</th>
                     <th>Vth</th>
                     <th>Rth</th>
                     <th>In</th>
@@ -78,12 +89,15 @@
         </header>
 
         <section class="settings-panel">
-          <label class="switch-row">
-            <span>Ativar musica</span>
-            <input id="music-enabled" type="checkbox" />
-          </label>
+          <p class="sound-status">Musica de fundo ligada por padrao.</p>
 
           <button id="mute-button" class="primary-button" type="button">Mutar musica</button>
+          <button id="skip-button" class="secondary-button" type="button">Pular musica</button>
+
+          <label class="field">
+            <span>Volume: <strong id="volume-value">35%</strong></span>
+            <input id="volume-control" type="range" min="0" max="100" value="35" />
+          </label>
 
           <label class="field">
             <span>Tamanho da tela</span>

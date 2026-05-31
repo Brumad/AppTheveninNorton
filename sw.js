@@ -1,4 +1,4 @@
-const CACHE_NAME = "thevenin-norton-v1";
+const CACHE_NAME = "thevenin-norton-v2";
 const APP_FILES = [
   "./",
   "./index.html",

@@ -173,6 +173,13 @@ select:focus {
   gap: 10px;
 }
 
+.form-note {
+  margin: -2px 0 12px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.35;
+}
+
 .resistor-item {
   display: grid;
   gap: 6px;
@@ -239,7 +246,7 @@ select:focus {
 
 table {
   width: 100%;
-  min-width: 620px;
+  min-width: 700px;
   border-collapse: collapse;
   color: var(--ink);
   font-size: 0.9rem;
@@ -284,6 +291,20 @@ th {
   margin: 18px 0 0;
   color: var(--muted);
   line-height: 1.5;
+}
+
+.sound-status {
+  margin: 0 0 14px;
+  padding: 16px;
+  background: var(--panel-soft);
+  border-radius: 8px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+input[type="range"] {
+  padding: 0;
+  accent-color: var(--blue);
 }
 
 .hidden {
