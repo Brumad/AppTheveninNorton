@@ -1,9 +1,7 @@
 const LIMITE_RESISTORES = 3;
 const LIMITE_HISTORICO = 10;
-const STORAGE_KEY = "thevenin-norton-pwa";
+const STORAGE_KEY = "thevenin-norton-pwa-v4";
 
-// Coloque seus arquivos .wav em assets/music e escreva os nomes aqui.
-// Exemplo: ["tema1.wav", "tema2.wav", "tema3.wav"]
 const MUSICAS = ["Msc1.wav", "Msc2.wav", "Msc3.wav", "Msc4.wav", "Msc5.wav", "Msc6.wav", "Msc7.wav"];
 
 const state = {
@@ -88,6 +86,7 @@ function addResistor(value = "") {
   label.className = "field";
 
   const span = document.createElement("span");
+
   const row = document.createElement("div");
   row.className = "resistor-row";
 
@@ -145,9 +144,11 @@ function calculate() {
   const r1 = valores[0];
   const ramoSaida = valores.slice(1);
   const modoTexto = circuitModeInput.value === "series" ? "Serie" : "Paralelo";
+
   const r2eq = circuitModeInput.value === "series"
     ? ramoSaida.reduce((soma, r) => soma + r, 0)
     : 1 / ramoSaida.reduce((soma, r) => soma + 1 / r, 0);
+
   const vth = (vfonte * r2eq) / (r1 + r2eq);
   const rth = (r1 * r2eq) / (r1 + r2eq);
   const inorton = vth / rth;
@@ -224,6 +225,7 @@ function randomMusic() {
 
 function playRandomMusic() {
   const next = randomMusic();
+
   if (!next) {
     return;
   }
@@ -247,11 +249,7 @@ function updateMusic() {
     currentAudio.volume = state.musicMuted ? 0 : state.volume;
   }
 
-  if (state.musicMuted) {
-    return;
-  }
-
-  if (!currentAudio || currentAudio.paused) {
+  if (!state.musicMuted && (!currentAudio || currentAudio.paused)) {
     playRandomMusic();
   }
 }
@@ -281,17 +279,19 @@ function setupInstallPrompt() {
 
 function registerServiceWorker() {
   if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("sw.js").catch(() => {});
+    navigator.serviceWorker.register("sw.js?v=4").catch(() => {});
   }
 }
 
 document.querySelector("#settings-button").addEventListener("click", () => showScreen("settings"));
 document.querySelector("#back-button").addEventListener("click", () => showScreen("main"));
 document.querySelector("#add-resistor-button").addEventListener("click", () => addResistor());
+
 document.querySelector("#calculator-form").addEventListener("submit", (event) => {
   event.preventDefault();
   calculate();
 });
+
 document.querySelector("#clear-history-button").addEventListener("click", () => {
   state.history = [];
   renderHistory();
@@ -300,24 +300,29 @@ document.querySelector("#clear-history-button").addEventListener("click", () => 
 
 voltageInput.addEventListener("input", saveState);
 circuitModeInput.addEventListener("change", saveState);
+
 muteButton.addEventListener("click", () => {
   state.musicMuted = !state.musicMuted;
   saveState();
   updateMusic();
 });
+
 skipButton.addEventListener("click", () => {
   skipMusic();
 });
+
 volumeControl.addEventListener("input", () => {
   state.volume = Number(volumeControl.value) / 100;
   saveState();
   updateMusic();
 });
+
 screenSizeInput.addEventListener("change", () => {
   state.screenSize = screenSizeInput.value;
   saveState();
   applyScreenSize();
 });
+
 window.addEventListener("pointerdown", () => updateMusic(), { once: true });
 
 loadState();
