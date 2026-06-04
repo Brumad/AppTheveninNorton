@@ -1,7 +1,7 @@
 {
   "name": "TheoNor Calculator",
   "short_name": "TheoNor",
-  "start_url": "./index.html?v=2",
+  "start_url": "./index.html?v=4",
   "display": "standalone",
   "background_color": "#1e1e2f",
   "theme_color": "#1e1e2f",
