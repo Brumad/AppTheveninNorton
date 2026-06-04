@@ -2,13 +2,17 @@ const CACHE_NAME = "thevenin-norton-v2";
 const APP_FILES = [
   "./",
   "./index.html",
-  "./style.css",
-  "./app.js",
-  "./manifest.json",
-  "./assets/icon.svg"
+  "./style.css?v=2",
+  "./app.js?v=2",
+  "./manifest.json?v=2",
+  "./assets/icon.svg",
+  "./assets/circuit-diagram.svg",
+  "./outputs/TheoNor_Calculator_Modelo_Excel.xlsx"
 ];
 
 self.addEventListener("install", (event) => {
+  self.skipWaiting();
+
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_FILES))
   );
@@ -18,12 +22,18 @@ self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
       Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key)))
-    )
+    ).then(() => self.clients.claim())
   );
 });
 
 self.addEventListener("fetch", (event) => {
   event.respondWith(
-    caches.match(event.request).then((cached) => cached || fetch(event.request))
+    fetch(event.request)
+      .then((response) => {
+        const copy = response.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+        return response;
+      })
+      .catch(() => caches.match(event.request))
   );
 });

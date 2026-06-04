@@ -19,6 +19,18 @@ Para instalar:
 - Android/Chrome: menu do navegador > Adicionar a tela inicial.
 - iPhone/Safari: compartilhar > Adicionar a Tela de Inicio.
 
+Recursos:
+
+- ate 5 resistores;
+- circuitos mistos por associacao acumulativa;
+- R1 fixo em serie com a fonte;
+- R2 inicia o ramo A-B;
+- R3+ podem entrar em serie ou paralelo;
+- historico com Req, Vth, Rth e In;
+- relatorio TXT;
+- historico CSV;
+- modelo Excel em outputs/TheoNor_Calculator_Modelo_Excel.xlsx.
+
 Musicas:
 
 1. Coloque arquivos .wav em assets/music.

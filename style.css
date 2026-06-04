@@ -180,6 +180,14 @@ select:focus {
   line-height: 1.35;
 }
 
+.circuit-diagram {
+  display: block;
+  width: 100%;
+  margin: 0 0 14px;
+  border-radius: 6px;
+  background: var(--paper);
+}
+
 .resistor-item {
   display: grid;
   gap: 6px;
@@ -187,6 +195,42 @@ select:focus {
 
 .resistor-row input {
   min-width: 0;
+}
+
+.connection-area {
+  display: grid;
+  gap: 7px;
+}
+
+.connection-help {
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.3;
+}
+
+.connection-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.connection-toggle button {
+  min-height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--panel-soft);
+  color: var(--text);
+  font-weight: 700;
+}
+
+.connection-toggle button.active {
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+.connection-toggle button:disabled {
+  cursor: default;
+  opacity: 0.42;
 }
 
 .remove-button {
@@ -205,6 +249,13 @@ select:focus {
   min-height: 48px;
   margin-top: 12px;
   padding: 12px;
+}
+
+.download-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
 
 .primary-button:hover,
@@ -300,6 +351,27 @@ th {
   border-radius: 8px;
   color: var(--muted);
   line-height: 1.45;
+}
+
+.about-box {
+  margin-top: 20px;
+  padding: 18px;
+  background: var(--panel-soft);
+  border-radius: 8px;
+}
+
+.about-box h2 {
+  margin: 0 0 8px;
+}
+
+.about-box p {
+  margin: 0 0 10px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.about-box p:last-child {
+  margin-bottom: 0;
 }
 
 input[type="range"] {

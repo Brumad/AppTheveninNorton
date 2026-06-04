@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#1e1e2f" />
     <title>TheoNor Calculator</title>
-    <link rel="manifest" href="manifest.json" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json?v=2" />
+    <link rel="stylesheet" href="style.css?v=2" />
   </head>
   <body>
     <main class="app-shell">
@@ -28,20 +28,14 @@
               <input id="voltage-input" inputmode="decimal" type="number" step="any" placeholder="Ex: 12" />
             </label>
 
-            <label class="field">
-              <span>Configuracao do ramo A-B</span>
-              <select id="circuit-mode">
-                <option value="parallel">Paralelo</option>
-                <option value="series">Serie</option>
-              </select>
-            </label>
-
             <div class="resistor-header">
               <h2>Resistores</h2>
-              <span id="resistor-count">0/3</span>
+              <span id="resistor-count">0/5</span>
             </div>
 
-            <p class="form-note">R1 fica em serie com a fonte; os demais resistores formam o ramo entre A e B.</p>
+            <p class="form-note">R1 fica em serie com a fonte. R2 inicia o ramo A-B; a partir de R3, escolha como o resistor entra no equivalente acumulado.</p>
+
+            <img class="circuit-diagram" src="assets/circuit-diagram.svg" alt="Diagrama do circuito suportado" />
 
             <div id="resistor-list" class="resistor-list"></div>
 
@@ -49,6 +43,13 @@
               Adicionar resistor
             </button>
             <button class="primary-button" type="submit">Calcular</button>
+            <button id="example-button" class="secondary-button" type="button">Carregar exemplo</button>
+            <button id="clear-fields-button" class="secondary-button" type="button">Limpar campos</button>
+            <button id="export-report-button" class="secondary-button" type="button">Exportar relatorio</button>
+            <button id="export-csv-button" class="secondary-button" type="button">Exportar historico CSV</button>
+            <a class="secondary-button download-link" href="outputs/TheoNor_Calculator_Modelo_Excel.xlsx" download>
+              Baixar modelo Excel
+            </a>
           </form>
 
           <section class="panel result-panel">
@@ -68,7 +69,8 @@
                     <th>#</th>
                     <th>V</th>
                     <th>R</th>
-                    <th>Modo</th>
+                    <th>Conexoes</th>
+                    <th>Req</th>
                     <th>Vth</th>
                     <th>Rth</th>
                     <th>In</th>
@@ -116,10 +118,23 @@
           <p class="hint">
             Para musica no celular, coloque arquivos .wav em assets/music e cadastre os nomes no arquivo app.js.
           </p>
+
+          <div class="about-box">
+            <h2>Sobre o projeto</h2>
+            <p>
+              Objetivo: automatizar calculos de equivalentes de Thevenin e Norton em circuitos DC resistivos didaticos.
+            </p>
+            <p>
+              Metodologia: R1 fica em serie com a fonte, R2 inicia o ramo A-B e R3+ entram em serie ou paralelo com o equivalente acumulado ate ali.
+            </p>
+            <p>
+              Formulas: Vth = V * Req / (R1 + Req), Rth = R1 * Req / (R1 + Req), In = Vth / Rth e Rn = Rth.
+            </p>
+          </div>
         </section>
       </section>
     </main>
 
-    <script src="app.js"></script>
+    <script src="app.js?v=2"></script>
   </body>
 </html>
