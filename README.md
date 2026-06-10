@@ -56,10 +56,10 @@ Req  = (5.8750 * 6) / (5.8750 + 6) = 2.9684 ohms
 Resultados:
 
 ```text
-Vth = 2.7468 V
-Rth = 2.2890 ohms
-In  = 1.200000 A
-Rn  = 2.2890 ohms
+Tensão de Thévenin (Vth): 2.7468 V
+Resistência de Thévenin (Rth): 2.2890 Ω
+Corrente de Norton (In): 1.200000 A
+Resistência de Norton (Rn): 2.2890 Ω
 ```
 
 ## Site
